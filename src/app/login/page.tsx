@@ -11,7 +11,7 @@ import {
   LoginFormSubmitButton,
   WelcomeText
 } from './login.styles';
-import { CountryCode, countryCodes } from '../assets/countryCodes';
+import { CountryCode, countryCodes } from '../../assets/countryCodes';
 import * as Yup from 'yup';
 const Login = () => {
   const handleOnSubmitForm = (values: FormikValues) => {

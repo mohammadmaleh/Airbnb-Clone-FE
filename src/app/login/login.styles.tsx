@@ -7,7 +7,7 @@ import {
   TextField,
   Typography
 } from '@mui/material';
-import { theme } from '../assets/colors';
+import { theme } from '../../assets/colors';
 export const Grid = styled(MUIGrid)`
   height: 100vh;
 `;
