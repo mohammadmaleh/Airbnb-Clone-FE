@@ -1,15 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface UserState {
-  userName: string;
-  email: string;
+  phoneNumber: string;
   isLoggedIn: boolean;
   token: string;
 }
 
 const initialState: UserState = {
-  userName: '',
-  email: '',
+  phoneNumber: '',
   isLoggedIn: false,
   token: ''
 };
@@ -18,17 +16,18 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    login: state => {
-      state = {
-        ...state,
+    login: (
+      state: UserState,
+      action: PayloadAction<Pick<UserState, 'token' | 'phoneNumber'>>
+    ) => {
+      return (state = {
+        phoneNumber: action.payload.phoneNumber,
+        token: action.payload.token,
         isLoggedIn: true
-      };
+      });
     },
     logout: state => {
-      state = {
-        ...state,
-        isLoggedIn: false
-      };
+      return (state = initialState);
     }
   }
 });

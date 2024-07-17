@@ -13,9 +13,17 @@ import {
 } from './login.styles';
 import { CountryCode, countryCodes } from '../../assets/countryCodes';
 import * as Yup from 'yup';
+import { login, logout, UserState } from '@/lib/features/user/userSlice';
+import { useDispatch } from 'react-redux';
 const Login = () => {
+  const dispatch = useDispatch();
   const handleOnSubmitForm = (values: FormikValues) => {
     console.log({ values });
+    const loginValues = {
+      phoneNumber: values['country-code'] + values['phone-number'],
+      token: '123456'
+    };
+    dispatch(login(loginValues));
   };
 
   const formik = useFormik({
@@ -29,7 +37,7 @@ const Login = () => {
     }),
     onSubmit: handleOnSubmitForm
   });
-4
+  4;
   const renderCountryOptions = (): React.ReactNode[] =>
     countryCodes.map(
       ({
@@ -41,6 +49,9 @@ const Login = () => {
         </MenuItem>
       )
     );
+  const handleLogout = (): void => {
+    dispatch(logout());
+  };
 
   return (
     <Container>
@@ -70,9 +81,9 @@ const Login = () => {
             <Typography>
               We’ll call or text you to confirm your number. Standard message
               and data rates apply.
-              <Typography sx={{ textDecoration: 'underline' }}>
-                Privacy Policy
-              </Typography>
+            </Typography>
+            <Typography sx={{ textDecoration: 'underline' }}>
+              Privacy Policy
             </Typography>
             <LoginFormSubmitButton type="submit" variant="contained">
               Submit
@@ -80,6 +91,8 @@ const Login = () => {
           </LoginForm>
         </LoginContainer>
       </Grid>
+
+      <div onClick={handleLogout}>logout</div>
     </Container>
   );
 };
