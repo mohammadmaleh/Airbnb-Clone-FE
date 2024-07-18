@@ -8,6 +8,7 @@ import {
   Typography
 } from '@mui/material';
 import { theme } from '../../assets/colors';
+
 export const Grid = styled(MUIGrid)`
   height: 100vh;
 `;

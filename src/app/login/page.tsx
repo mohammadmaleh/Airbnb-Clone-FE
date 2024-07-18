@@ -1,4 +1,5 @@
 'use client';
+
 import { FormikValues, useFormik } from 'formik';
 import { Typography, Container, MenuItem } from '@mui/material';
 import {
@@ -13,16 +14,20 @@ import {
 } from './login.styles';
 import { CountryCode, countryCodes } from '../../assets/countryCodes';
 import * as Yup from 'yup';
-import { login, logout, UserState } from '@/lib/features/user/userSlice';
+import { login, logout } from '@/lib/features/user/userSlice';
 import { useDispatch } from 'react-redux';
+
 const Login = () => {
   const dispatch = useDispatch();
+
   const handleOnSubmitForm = (values: FormikValues) => {
     console.log({ values });
+
     const loginValues = {
       phoneNumber: values['country-code'] + values['phone-number'],
       token: '123456'
     };
+
     dispatch(login(loginValues));
   };
 
@@ -37,7 +42,7 @@ const Login = () => {
     }),
     onSubmit: handleOnSubmitForm
   });
-  4;
+
   const renderCountryOptions = (): React.ReactNode[] =>
     countryCodes.map(
       ({
@@ -49,13 +54,14 @@ const Login = () => {
         </MenuItem>
       )
     );
+
   const handleLogout = (): void => {
     dispatch(logout());
   };
 
   return (
     <Container>
-      <Grid container justifyContent="center" alignItems="center">
+      <Grid alignItems="center" container justifyContent="center">
         <LoginContainer>
           <LoginHeaderContainer>
             <Typography fontWeight="bold">Login or sign up</Typography>
@@ -63,20 +69,20 @@ const Login = () => {
           <LoginForm onSubmit={formik.handleSubmit}>
             <WelcomeText>Welcome To Airbnb</WelcomeText>
             <LoginFormSelect
-              name="country-code"
               id="country-code"
               label="Country Code"
-              value={formik.values['country-code']}
+              name="country-code"
               onChange={formik.handleChange}
+              value={formik.values['country-code']}
             >
               {renderCountryOptions()}
             </LoginFormSelect>
             <LoginFormInput
-              name="phone-number"
-              label="Phone Number"
               id="phone-number"
-              value={formik.values['phone-number']}
+              label="Phone Number"
+              name="phone-number"
               onChange={formik.handleChange}
+              value={formik.values['phone-number']}
             />
             <Typography>
               We’ll call or text you to confirm your number. Standard message

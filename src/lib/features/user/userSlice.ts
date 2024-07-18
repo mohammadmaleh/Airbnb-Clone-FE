@@ -26,8 +26,8 @@ export const userSlice = createSlice({
         isLoggedIn: true
       });
     },
-    logout: state => {
-      return (state = initialState);
+    logout: () => {
+      return initialState;
     }
   }
 });

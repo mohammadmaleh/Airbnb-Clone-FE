@@ -1,15 +1,82 @@
 {
-  "extends": ["next/core-web-vitals", "plugin:prettier/recommended"],
-  "plugins": ["prettier", "import", "simple-import-sort"],
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "prettier",
+    "import",
+    "simple-import-sort",
+    "@typescript-eslint",
+    "react",
+    "react-hooks"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module"
+  },
   "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/prefer-stateless-function": "error",
+    "react/button-has-type": "error",
+    "react/no-unused-prop-types": "error",
+    "react/jsx-pascal-case": "error",
+    "react/jsx-no-script-url": "error",
+    "react/no-children-prop": "error",
+    "react/no-danger": "error",
+    "react/no-danger-with-children": "error",
+    "react/no-unstable-nested-components": ["error", { "allowAsProps": true }],
+    "react/jsx-fragments": "error",
+    "react/destructuring-assignment": [
+      "error",
+      "always",
+      { "destructureInSignature": "always" }
+    ],
+    "react/jsx-no-leaked-render": ["error", { "validStrategies": ["ternary"] }],
+    "react/jsx-max-depth": ["error", { "max": 5 }],
+    "react/function-component-definition": [
+      "error",
+      { "namedComponents": "arrow-function" }
+    ],
+    "react/jsx-key": [
+      "error",
+      {
+        "checkFragmentShorthand": true,
+        "checkKeyMustBeforeSpread": true,
+        "warnOnDuplicates": true
+      }
+    ],
+    "react/jsx-no-useless-fragment": "error",
+    "react/jsx-curly-brace-presence": "error",
+    "react/no-typos": "error",
+    "react/display-name": "error",
+    "react/self-closing-comp": "error",
+    "react/jsx-sort-props": "error",
+    "react/jsx-one-expression-per-line": "off",
+    "react/prop-types": "off",
     "padding-line-between-statements": [
       "error",
+      { "blankLine": "always", "prev": "*", "next": "return" },
+      { "blankLine": "always", "prev": "block-like", "next": "*" },
+      { "blankLine": "always", "prev": "*", "next": "const" },
+      { "blankLine": "always", "prev": "const", "next": "*" },
       { "blankLine": "always", "prev": "import", "next": "*" },
       { "blankLine": "any", "prev": "import", "next": "import" },
-      { "blankLine": "always", "prev": "const", "next": "function" },
-      { "blankLine": "always", "prev": "let", "next": "function" },
-      { "blankLine": "always", "prev": "var", "next": "function" },
-      { "blankLine": "always", "prev": "*", "next": "return" }
+      { "blankLine": "always", "prev": "directive", "next": "*" },
+      { "blankLine": "any", "prev": "directive", "next": "directive" }
     ]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "env": {
+    "browser": true,
+    "es2021": true
   }
 }
