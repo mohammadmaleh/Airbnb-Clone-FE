@@ -19,16 +19,13 @@ export const userSlice = createSlice({
     login: (
       state: UserState,
       action: PayloadAction<Pick<UserState, 'token' | 'phoneNumber'>>
-    ) => {
-      return (state = {
+    ) =>
+      (state = {
         phoneNumber: action.payload.phoneNumber,
         token: action.payload.token,
         isLoggedIn: true
-      });
-    },
-    logout: () => {
-      return initialState;
-    }
+      }),
+    logout: () => initialState
   }
 });
 

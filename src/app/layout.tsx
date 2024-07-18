@@ -19,20 +19,18 @@ const RootLayout = ({
   children
 }: Readonly<{
   children: React.ReactNode;
-}>) => {
-  return (
-    <html
-      lang="en"
+}>) => (
+  <html
+    lang="en"
+    style={{ height: '100%', backgroundColor: theme.colors.white }}
+  >
+    <body
+      className={inter.className}
       style={{ height: '100%', backgroundColor: theme.colors.white }}
     >
-      <body
-        className={inter.className}
-        style={{ height: '100%', backgroundColor: theme.colors.white }}
-      >
-        <StoreProvider>{children}</StoreProvider>
-      </body>
-    </html>
-  );
-};
+      <StoreProvider>{children}</StoreProvider>
+    </body>
+  </html>
+);
 
 export default RootLayout;
